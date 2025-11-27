@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по России — Обратная связь</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+</head>
+<body class="page page--accent">
+    <header class="page__header site-header">
+        <div class="site-header__logo">TravelRu</div>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Меню</button>
+            <ul class="site-nav__links" id="nav-links">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="destinations.html">Маршруты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page__content feedback">
+        <section class="feedback__intro">
+            <h1 class="section-title">Поделитесь ожиданиями</h1>
+            <p>Мы предложим маршрут в течение 24 часов. Все поля обязательны, чтобы куратор мог адаптировать программу.</p>
+        </section>
+
+        <form class="feedback-form" id="travel-form" novalidate>
+            <div class="feedback-form__field">
+                <label class="feedback-form__label" for="full-name">Имя и фамилия</label>
+                <input class="feedback-form__input" type="text" id="full-name" name="fullName" required placeholder="Алексей Смирнов">
+            </div>
+
+            <div class="feedback-form__field">
+                <label class="feedback-form__label" for="email">Email</label>
+                <input class="feedback-form__input" type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+
+            <div class="feedback-form__field">
+                <label class="feedback-form__label" for="travel-style">Стиль путешествия</label>
+                <select class="feedback-form__input" id="travel-style" name="travelStyle" required>
+                    <option value="">Выберите стиль</option>
+                    <option value="weekend">Выходные в городе</option>
+                    <option value="nature">Экология и природа</option>
+                    <option value="extreme">Экстрим и активность</option>
+                </select>
+            </div>
+
+            <div class="feedback-form__field feedback-form__field--wide">
+                <label class="feedback-form__label" for="notes">Комментарии</label>
+                <textarea class="feedback-form__input feedback-form__input--textarea" id="notes" name="notes" rows="4" placeholder="Какие направления интересны, какие даты удобны?"></textarea>
+            </div>
+
+            <label class="feedback-form__consent">
+                <input class="feedback-form__checkbox" type="checkbox" id="consent" name="consent" required>
+                <span>Я согласен на обработку персональных данных и получение рекомендаций</span>
+            </label>
+
+            <button class="feedback-form__submit" type="submit">Отправить данные</button>
+        </form>
+    </main>
+
+    <footer class="page__footer site-footer site-footer--light">
+        <p>&copy; <span id="year"></span> TravelRu. Форма содержит минимум три типа полей и обрабатывается в JS.</p>
+    </footer>
+</body>
+</html>
+
+

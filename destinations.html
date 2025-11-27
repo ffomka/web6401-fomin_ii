@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по России — Grid</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+</head>
+<body class="page">
+    <header class="page__header site-header site-header--compact">
+        <div class="site-header__logo">TravelRu</div>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Меню</button>
+            <ul class="site-nav__links" id="nav-links">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="destinations.html">Маршруты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page__content destinations">
+        <header class="destinations__intro">
+            <p class="destinations__eyebrow">Интерактивная карусель</p>
+            <h1 class="section-title">Выберите настроение путешествия</h1>
+            <p>Переключайтесь между регионами — карточки появляются с красивой анимацией.</p>
+        </header>
+
+        <!-- Карусель вместо статической сетки -->
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/baikal.jpg" alt="Байкал">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Байкал</h2>
+                            <p class="carousel-item__text">Ледяные гроты, прогулки по тайге и теплая юрта.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/red-square.jpg" alt="Москва">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Москва</h2>
+                            <p class="carousel-item__text">Современные музеи, гастрономия и ночная Москва-Сити.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/hermitage.jpg" alt="Санкт-Петербург">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Санкт-Петербург</h2>
+                            <p class="carousel-item__text">Белые ночи, арт-пространства и каналы.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/peterhof.jpg" alt="Петергоф">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Петергоф</h2>
+                            <p class="carousel-item__text">Фонтаны, дворцы и прогулка по Финскому заливу.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/baikal_1.jpg" alt="Алтай">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Алтай</h2>
+                            <p class="carousel-item__text">Конные маршруты, горные перевалы и горячие источники.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-item">
+                        <img class="carousel-item__image" src="images/baikal_2.jpg" alt="Камчатка">
+                        <div class="carousel-item__body">
+                            <h2 class="carousel-item__title">Камчатка</h2>
+                            <p class="carousel-item__text">Вулканы, серфинг и морские экскурсии.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Кнопки навигации -->
+                <button class="carousel-nav carousel-prev" id="prevBtn" aria-label="Предыдущая карточка">❮</button>
+                <button class="carousel-nav carousel-next" id="nextBtn" aria-label="Следующая карточка">❯</button>
+            </div>
+
+            <!-- Индикаторы-точки -->
+            <div class="carousel-indicators" id="indicators"></div>
+        </div>
+    </main>
+
+    <footer class="page__footer site-footer">
+        <p>&copy; <span id="year"></span> TravelRu. Страница «Маршруты» с интерактивной каруселью.</p>
+    </footer>
+</body>
+</html>

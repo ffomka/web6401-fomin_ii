@@ -1,0 +1,697 @@
+/* ===== CSS-переменные для цветовой палитры и базовых стилей ===== */
+:root {
+    /* Основные цвета фона */
+    --color-bg: #0b1f2a; /* Темно-синий основной фон */
+    --color-bg-light: #122d3c; /* Светлее основного, для карточек */
+    --color-bg-muted: #0f2533; /* Приглушенный фон для вторичных блоков */
+    --color-bg-contrast: #ffffff; /* Белый контрастный цвет */
+    
+    /* Акцентные цвета */
+    --color-accent: #ffb347; /* Оранжевый акцент для кнопок и подсветок */
+    --color-accent-strong: #ff7e5f; /* Насыщенный оранжевый для градиентов */
+    --color-secondary: #48c6ef; /* Голубой вторичный акцент */
+    
+    /* Цвета текста */
+    --color-text: #e8f1f5; /* Основной светлый текст */
+    --color-text-muted: rgba(232, 241, 245, 0.7); /* Приглушенный текст (70% непрозрачность) */
+    
+    /* Границы и оверлеи */
+    --color-border: rgba(255, 255, 255, 0.2); /* Полупрозрачная белая граница */
+    --color-radial-haze: rgba(72, 198, 239, 0.25); /* Голубоватая дымка для фона */
+    --color-overlay-primary: rgba(18, 45, 60, 0.85); /* Темный оверлей для страницы с акцентом */
+    --color-overlay-deep: rgba(8, 19, 26, 0.95); /* Глубокий темный оверлей */
+    --color-glass-strong: rgba(11, 31, 42, 0.8); /* Эффект "стекла" для шапки */
+    --color-highlight-badge: rgba(255, 255, 255, 0.1); /* Полупрозрачная подсветка для бейджей */
+    
+    /* Формы и элементы ввода */
+    --color-form-bg: rgba(11, 31, 42, 0.85); /* Фон формы */
+    --color-input-bg: rgba(255, 255, 255, 0.08); /* Фон полей ввода */
+    
+    /* Футер */
+    --color-footer-dark: rgba(5, 15, 25, 0.95); /* Темный фон футера */
+    --color-footer-light: rgba(0, 0, 0, 0.5); /* Светлый фон футера */
+    
+    /* Меню и прозрачность */
+    --color-menu-bg: rgba(5, 15, 25, 0.95); /* Фон мобильного меню */
+    --color-transparent: transparent; /* Полная прозрачность */
+    
+    /* Тени */
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.25); /* Мягкая тень для элементов */
+    --shadow-card: 0 15px 30px rgba(5, 15, 25, 0.6); /* Тень для карточек */
+    --shadow-deep: 0 25px 45px rgba(0, 0, 0, 0.35); /* Глубокая тень */
+    
+    /* Скругления */
+    --radius-lg: 24px; /* Большое скругление углов */
+    --radius-md: 16px; /* Среднее скругление */
+    --radius-sm: 8px; /* Малое скругление */
+    
+    /* Анимации */
+    --transition-base: 0.3s ease; /* Базовая длительность transitions */
+    
+    /* Размер шрифта по умолчанию */
+    font-size: 16px;
+}
+
+/* ===== Сброс стилей для всех элементов ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Включаем padding и border в общую ширину элемента */
+}
+
+/* ===== Базовые стили body ===== */
+body {
+    margin: 0; /* Убираем отступы по умолчанию */
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif; /* Стек шрифтов */
+    background: var(--color-bg); /* Основной фон */
+    color: var(--color-text); /* Цвет текста */
+}
+
+/* ===== Стили изображений ===== */
+img {
+    max-width: 100%; /* Изображения не выходят за границы родителя */
+    display: block; /* Убираем лишние отступы снизу */
+    border-radius: var(--radius-md); /* Скругляем углы */
+}
+
+/* ===== Стили ссылок ===== */
+a {
+    color: inherit; /* Наследуем цвет от родителя */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+/* ===== Основной контейнер страницы ===== */
+.page {
+    min-height: 100vh; /* Минимальная высота на весь экран */
+    display: flex; /* Flexbox для вертикального расположения */
+    flex-direction: column; /* Колонка: header, main, footer */
+    background: radial-gradient(circle at top, var(--color-radial-haze), var(--color-transparent) 60%) var(--color-bg); /* Радиальный градиент сверху */
+}
+
+/* ===== Страница с акцентным фоном (feedback.html) ===== */
+.page--accent {
+    background:
+        linear-gradient(135deg, var(--color-overlay-primary), var(--color-overlay-deep)), /* Градиентный оверлей */
+        url("../images/russia-landscape.jpg") center/cover fixed; /* Фоновое изображение */
+}
+
+/* ===== Отступы для header и footer ===== */
+.page__header,
+.page__footer {
+    padding: 1.5rem 4vw; /* Адаптивные отступы по горизонтали */
+}
+
+/* ===== Основной контент страницы ===== */
+.page__content {
+    flex: 1; /* Занимает все доступное пространство между header и footer */
+    padding: 2rem 4vw 3rem; /* Вертикальные и горизонтальные отступы */
+}
+
+/* ===== Секции на странице ===== */
+.page__section {
+    padding: 2rem 4vw 3rem; /* Отступы для секций */
+}
+
+/* ===== Заголовок секции ===== */
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem); /* Адаптивный размер шрифта (от 1.8rem до 2.6rem) */
+    margin: 0 0 0.75rem; /* Отступ снизу */
+    letter-spacing: 0.03em; /* Межбуквенное расстояние */
+}
+
+/* ===== Шапка сайта ===== */
+.site-header {
+    display: flex; /* Flexbox для размещения лого и навигации */
+    align-items: center; /* Выравнивание по вертикали */
+    justify-content: space-between; /* Максимальное расстояние между лого и меню */
+    border-bottom: 1px solid var(--color-border); /* Нижняя граница */
+    position: sticky; /* Липкое позиционирование (остается вверху при скролле) */
+    top: 0; /* Прилипает к верху */
+    backdrop-filter: blur(10px); /* Размытие фона под шапкой */
+    background: var(--color-glass-strong); /* Полупрозрачный фон */
+    z-index: 10; /* Поверх других элементов */
+}
+
+/* ===== Компактная шапка (без sticky) ===== */
+.site-header--compact {
+    position: static; /* Обычное позиционирование */
+}
+
+/* ===== Логотип в шапке ===== */
+.site-header__logo {
+    font-weight: 600; /* Полужирный шрифт */
+    letter-spacing: 0.2em; /* Увеличенное расстояние между буквами */
+    text-transform: uppercase; /* Все буквы заглавные */
+}
+
+/* ===== Контейнер навигации ===== */
+.site-nav {
+    position: relative; /* Для позиционирования выпадающего меню */
+}
+
+/* ===== Кнопка переключения мобильного меню ===== */
+.site-nav__toggle {
+    display: none; /* Скрыта по умолчанию (показывается в media queries) */
+    background: none; /* Без фона */
+    border: 1px solid var(--color-border); /* Тонкая граница */
+    color: var(--color-text); /* Цвет текста */
+    padding: 0.5rem 1rem; /* Внутренние отступы */
+    border-radius: var(--radius-sm); /* Скругление углов */
+    cursor: pointer; /* Курсор-указатель */
+}
+
+/* ===== Список ссылок навигации ===== */
+.site-nav__links {
+    list-style: none; /* Убираем маркеры списка */
+    display: flex; /* Горизонтальное расположение */
+    gap: 1.5rem; /* Расстояние между ссылками */
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+}
+
+/* ===== Отдельная ссылка навигации ===== */
+.site-nav__link {
+    padding: 0.25rem; /* Внутренний отступ */
+    border-bottom: 2px solid transparent; /* Прозрачная нижняя граница (для анимации) */
+    transition: border-color var(--transition-base); /* Плавный переход цвета границы */
+}
+
+/* ===== Активная и наведенная ссылка ===== */
+.site-nav__link.is-active,
+.site-nav__link:hover {
+    border-color: var(--color-accent); /* Оранжевая нижняя граница */
+}
+
+/* ===== Блок-герой (главная страница) ===== */
+.hero {
+    display: flex; /* Flexbox для размещения контента и изображения */
+    flex-wrap: wrap; /* Перенос на новую строку при нехватке места */
+    gap: 2.5rem; /* Расстояние между блоками */
+    align-items: center; /* Выравнивание по вертикали */
+    padding-top: 3rem; /* Отступ сверху */
+}
+
+/* ===== Контент и изображение героя ===== */
+.hero__content,
+.hero__visual {
+    flex: 1 1 320px; /* Растут и сжимаются, минимальная ширина 320px */
+}
+
+/* ===== Надпись-хэштег над заголовком ===== */
+.hero__eyebrow {
+    text-transform: uppercase; /* Заглавные буквы */
+    letter-spacing: 0.35em; /* Широкое межбуквенное расстояние */
+    color: var(--color-secondary); /* Голубой цвет */
+    font-size: 0.85rem; /* Уменьшенный размер */
+}
+
+/* ===== Заголовок героя ===== */
+.hero__title {
+    font-size: clamp(2.4rem, 5vw, 3.4rem); /* Адаптивный размер */
+    margin: 1rem 0; /* Вертикальные отступы */
+}
+
+/* ===== Описание героя ===== */
+.hero__text {
+    color: var(--color-text-muted); /* Приглушенный цвет текста */
+    line-height: 1.6; /* Межстрочный интервал */
+}
+
+/* ===== Контейнер кнопок ===== */
+.hero__actions {
+    display: flex; /* Flexbox для кнопок */
+    flex-wrap: wrap; /* Перенос на новую строку */
+    gap: 1rem; /* Расстояние между кнопками */
+    margin-top: 1.5rem; /* Отступ сверху */
+}
+
+/* ===== Базовый стиль кнопки ===== */
+.hero__button {
+    padding: 0.85rem 1.75rem; /* Внутренние отступы */
+    border-radius: 999px; /* Круглые края (таблетка) */
+    font-weight: 600; /* Полужирный шрифт */
+    border: 1px solid transparent; /* Прозрачная граница */
+    transition: transform var(--transition-base), background var(--transition-base); /* Плавные переходы */
+}
+
+/* ===== Основная кнопка (оранжевая) ===== */
+.hero__button--primary {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong)); /* Градиент */
+    color: var(--color-bg); /* Темный текст */
+}
+
+/* ===== Второстепенная кнопка (с границей) ===== */
+.hero__button--ghost {
+    border-color: var(--color-border); /* Белая полупрозрачная граница */
+    color: var(--color-text); /* Светлый текст */
+}
+
+/* ===== Эффект при наведении на кнопку ===== */
+.hero__button:hover {
+    transform: translateY(-3px) scale(1.01); /* Поднятие и легкое увеличение */
+}
+
+/* ===== Анимация плавающего изображения ===== */
+@keyframes float {
+    0% { transform: translateY(0px) scale(1); box-shadow: var(--shadow-card); }
+    50% { transform: translateY(-12px) scale(1.01); box-shadow: var(--shadow-deep); }
+    100% { transform: translateY(0px) scale(1); box-shadow: var(--shadow-card); }
+}
+
+/* ===== Изображение героя ===== */
+.hero__image {
+    width: 100%; /* На всю ширину контейнера */
+    height: auto; /* Сохранение пропорций */
+    border-radius: var(--radius-lg); /* Большое скругление углов */
+    animation: float 6s ease-in-out infinite; /* Бесконечная анимация плавания */
+}
+
+/* ===== Подпись под изображением ===== */
+.hero__caption {
+    margin-top: 0.75rem; /* Отступ сверху */
+    color: var(--color-text-muted); /* Приглушенный цвет */
+}
+
+/* ===== Блок преимуществ (highlights) ===== */
+.highlights {
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Вертикальное расположение */
+    gap: 1.5rem; /* Расстояние между элементами */
+}
+
+/* ===== Список карточек преимуществ ===== */
+.highlights__list {
+    display: flex; /* Flexbox для карточек */
+    flex-wrap: wrap; /* Перенос на новую строку */
+    gap: 1.25rem; /* Расстояние между карточками */
+}
+
+/* ===== Карточка преимущества ===== */
+.highlight-card {
+    flex: 1 1 220px; /* Минимальная ширина 220px, растягивается */
+    padding: 1.5rem; /* Внутренние отступы */
+    border-radius: var(--radius-lg); /* Большое скругление */
+    background: var(--color-bg-light); /* Светлый фон */
+    border: 1px solid var(--color-border); /* Граница */
+    box-shadow: var(--shadow-soft); /* Мягкая тень */
+}
+
+/* ===== Заголовок карточки ===== */
+.highlight-card__title {
+    margin-top: 0; /* Убираем верхний отступ */
+}
+
+/* ===== Блок историй путешествий ===== */
+.stories {
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Вертикальное расположение */
+    gap: 1.5rem; /* Расстояние между элементами */
+}
+
+/* ===== Список карточек историй ===== */
+.stories__list {
+    display: flex; /* Flexbox для карточек */
+    flex-wrap: wrap; /* Перенос на новую строку */
+    gap: 1.25rem; /* Расстояние между карточками */
+}
+
+/* ===== Карточка истории ===== */
+.story-card {
+    flex: 1 1 200px; /* Минимальная ширина 200px */
+    padding: 1.25rem; /* Внутренние отступы */
+    border-radius: var(--radius-md); /* Среднее скругление */
+    border: 1px solid var(--color-border); /* Граница */
+    background: var(--color-bg-muted); /* Приглушенный фон */
+    position: relative; /* Для позиционирования бейджа */
+    overflow: hidden; /* Скрываем выходящие элементы */
+}
+
+/* ===== Бейдж на карточке истории ===== */
+.story-card__badge {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 1rem; /* Отступ сверху */
+    right: 1rem; /* Отступ справа */
+    padding: 0.25rem 0.75rem; /* Внутренние отступы */
+    border-radius: 999px; /* Круглые края */
+    background: var(--color-highlight-badge); /* Полупрозрачный фон */
+    font-size: 0.75rem; /* Маленький шрифт */
+    letter-spacing: 0.1em; /* Межбуквенное расстояние */
+}
+
+/* ===== Вводный блок страницы маршрутов ===== */
+.destinations__intro {
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 2rem; /* Отступ снизу */
+}
+
+/* ===== Надпись-хэштег над заголовком маршрутов ===== */
+.destinations__eyebrow {
+    text-transform: uppercase; /* Заглавные буквы */
+    letter-spacing: 0.35em; /* Широкое расстояние */
+    color: var(--color-secondary); /* Голубой цвет */
+    font-size: 0.85rem; /* Уменьшенный размер */
+}
+
+/* ===== СТИЛИ КАРУСЕЛИ ДЛЯ DESTINATIONS.HTML ===== */
+
+/* Контейнер карусели */
+.carousel-container {
+    position: relative; /* Для позиционирования кнопок навигации */
+    margin: 2rem 0; /* Вертикальные отступы */
+}
+
+/* Обертка карусели с overflow: hidden */
+.carousel-wrapper {
+    overflow: hidden; /* Скрываем карточки за пределами видимой области */
+    border-radius: var(--radius-lg); /* Большое скругление углов */
+    position: relative; /* Для позиционирования кнопок */
+    background: var(--color-bg-light); /* Светлый фон */
+}
+
+/* Трек карусели — горизонтальная полоса карточек */
+.carousel-track {
+    display: flex; /* Flexbox для горизонтального расположения */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Плавная анимация сдвига */
+    gap: 1.25rem; /* Расстояние между карточками */
+    padding: 1.25rem; /* Внутренние отступы */
+}
+
+/* Отдельная карточка карусели */
+.carousel-item {
+    flex: 0 0 calc(33.333% - 0.85rem); /* Каждая карточка занимает 1/3 ширины (для 3 карточек) */
+    min-width: 250px; /* Минимальная ширина */
+    display: flex; /* Flexbox для вертикального расположения содержимого */
+    flex-direction: column; /* Колонка: изображение, текст */
+    border-radius: var(--radius-lg); /* Большое скругление */
+    border: 1px solid var(--color-border); /* Граница */
+    background: var(--color-bg-muted); /* Приглушенный фон */
+    overflow: hidden; /* Скрываем выходящие элементы */
+    box-shadow: var(--shadow-soft); /* Мягкая тень */
+    animation: slideInUp 0.6s ease-out forwards; /* Анимация появления снизу вверх */
+    opacity: 0; /* Изначально невидима (до начала анимации) */
+}
+
+/* Анимация появления карточки снизу вверх */
+@keyframes slideInUp {
+    from {
+        opacity: 0; /* Невидимая */
+        transform: translateY(30px); /* Сдвинута на 30px вниз */
+    }
+    to {
+        opacity: 1; /* Полная видимость */
+        transform: translateY(0); /* Возвращается на место */
+    }
+}
+
+/* Задержка анимации для каждой карточки (каскадный эффект) */
+.carousel-item:nth-child(1) { animation-delay: 0.1s; }
+.carousel-item:nth-child(2) { animation-delay: 0.2s; }
+.carousel-item:nth-child(3) { animation-delay: 0.3s; }
+.carousel-item:nth-child(4) { animation-delay: 0.4s; }
+.carousel-item:nth-child(5) { animation-delay: 0.5s; }
+.carousel-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Изображение в карточке карусели */
+.carousel-item__image {
+    width: 100%; /* На всю ширину карточки */
+    height: 220px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезка изображения с сохранением пропорций */
+    border-radius: var(--radius-md) 0 0 0; /* Скругление только левого верхнего угла */
+}
+
+/* Тело карточки (текстовое содержимое) */
+.carousel-item__body {
+    padding: 1.5rem; /* Внутренние отступы */
+    flex: 1; /* Занимает оставшееся место */
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Вертикальное расположение */
+}
+
+/* Заголовок карточки */
+.carousel-item__title {
+    margin: 0 0 0.5rem; /* Отступ снизу */
+    font-size: 1.3rem; /* Размер шрифта */
+    color: var(--color-text); /* Светлый цвет текста */
+}
+
+/* Текст карточки */
+.carousel-item__text {
+    color: var(--color-text-muted); /* Приглушенный цвет */
+    line-height: 1.6; /* Межстрочный интервал */
+    font-size: 0.95rem; /* Немного уменьшенный размер */
+}
+
+/* ===== КНОПКИ НАВИГАЦИИ КАРУСЕЛИ ===== */
+
+/* Базовый стиль кнопок (prev и next) */
+.carousel-nav {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%); /* Компенсация половины высоты кнопки */
+    background: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый фон */
+    border: none; /* Без границы */
+    color: var(--color-bg-contrast); /* Белый цвет текста */
+    width: 44px; /* Ширина кнопки */
+    height: 44px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    cursor: pointer; /* Курсор-указатель */
+    display: flex; /* Flexbox для центрирования символа */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    z-index: 5; /* Поверх карточек */
+    transition: all var(--transition-base); /* Плавный переход */
+    font-size: 1.5rem; /* Размер символа */
+}
+
+/* Эффект при наведении на кнопку */
+.carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.4); /* Более яркий фон */
+    transform: translateY(-50%) scale(1.1); /* Увеличение на 10% */
+}
+
+/* Отключенная кнопка */
+.carousel-nav:disabled {
+    opacity: 0.5; /* Полупрозрачность */
+    cursor: not-allowed; /* Курсор "запрещено" */
+}
+
+/* Кнопка "Предыдущая" */
+.carousel-prev {
+    left: 1rem; /* Отступ слева */
+}
+
+/* Кнопка "Следующая" */
+.carousel-next {
+    right: 1rem; /* Отступ справа */
+}
+
+/* ===== ИНДИКАТОРЫ КАРУСЕЛИ (ТОЧКИ) ===== */
+
+/* Контейнер индикаторов */
+.carousel-indicators {
+    display: flex; /* Flexbox для горизонтального расположения */
+    gap: 0.5rem; /* Расстояние между точками */
+    justify-content: center; /* Центрирование по горизонтали */
+    margin-top: 1.5rem; /* Отступ сверху */
+}
+
+/* Отдельная точка */
+.carousel-dot {
+    width: 10px; /* Ширина */
+    height: 10px; /* Высота */
+    border-radius: 50%; /* Круглая форма */
+    background: var(--color-border); /* Полупрозрачный белый */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор-указатель */
+    transition: all var(--transition-base); /* Плавный переход */
+}
+
+/* Активная точка */
+.carousel-dot.active {
+    background: var(--color-accent); /* Оранжевый цвет */
+    width: 28px; /* Расширяется */
+    border-radius: 5px; /* Превращается в овал */
+}
+
+/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== */
+
+/* Контейнер формы */
+.feedback {
+    max-width: 960px; /* Максимальная ширина */
+    margin: 0 auto; /* Центрирование */
+}
+
+/* Сама форма */
+.feedback-form {
+    margin-top: 2rem; /* Отступ сверху */
+    display: grid; /* CSS Grid для размещения полей */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Адаптивные колонки */
+    gap: 1.5rem; /* Расстояние между полями */
+    padding: 2rem; /* Внутренние отступы */
+    background: var(--color-form-bg); /* Полупрозрачный фон */
+    border-radius: var(--radius-lg); /* Большое скругление */
+    border: 1px solid var(--color-border); /* Граница */
+    box-shadow: var(--shadow-soft); /* Мягкая тень */
+}
+
+/* Поле формы */
+.feedback-form__field {
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Колонка: label, input */
+    gap: 0.5rem; /* Расстояние между label и input */
+}
+
+/* Поле, занимающее всю ширину */
+.feedback-form__field--wide {
+    grid-column: 1 / -1; /* От первой до последней колонки */
+}
+
+/* Метка поля */
+.feedback-form__label {
+    font-size: 0.95rem; /* Размер шрифта */
+}
+
+/* Элемент ввода */
+.feedback-form__input {
+    border: 1px solid var(--color-border); /* Граница */
+    background: var(--color-input-bg); /* Полупрозрачный фон */
+    color: var(--color-text); /* Светлый текст */
+    padding: 0.9rem 1rem; /* Внутренние отступы */
+    border-radius: var(--radius-sm); /* Малое скругление */
+    font-size: 1rem; /* Размер шрифта */
+    transition: border-color var(--transition-base); /* Плавный переход цвета границы */
+}
+
+/* Фокус на поле ввода */
+.feedback-form__input:focus {
+    outline: none; /* Убираем стандартный outline */
+    border-color: var(--color-accent); /* Оранжевая граница */
+}
+
+/* Текстовое поле (textarea) */
+.feedback-form__input--textarea {
+    resize: vertical; /* Изменение размера только по вертикали */
+}
+
+/* Блок согласия */
+.feedback-form__consent {
+    grid-column: 1 / -1; /* На всю ширину */
+    display: flex; /* Flexbox */
+    gap: 0.75rem; /* Расстояние между чекбоксом и текстом */
+    align-items: flex-start; /* Выравнивание по верху */
+    font-size: 0.95rem; /* Размер шрифта */
+    color: var(--color-text-muted); /* Приглушенный цвет */
+}
+
+/* Чекбокс */
+.feedback-form__checkbox {
+    margin-top: 0.3rem; /* Отступ сверху для выравнивания с текстом */
+}
+
+/* Кнопка отправки */
+.feedback-form__submit {
+    grid-column: 1 / -1; /* На всю ширину */
+    justify-self: flex-start; /* Выравнивание по левому краю */
+    padding: 0.9rem 2rem; /* Внутренние отступы */
+    border-radius: 999px; /* Круглые края */
+    border: none; /* Без границы */
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); /* Градиент */
+    color: var(--color-bg); /* Темный текст */
+    font-size: 1rem; /* Размер шрифта */
+    font-weight: 600; /* Полужирный */
+    cursor: pointer; /* Курсор-указатель */
+    transition: transform var(--transition-base); /* Плавный переход */
+}
+
+/* Эффект при наведении на кнопку отправки */
+.feedback-form__submit:hover {
+    transform: translateY(-2px) scale(1.01); /* Поднятие и легкое увеличение */
+}
+
+/* ===== ФУТЕР ===== */
+
+/* Основной стиль футера */
+.site-footer {
+    text-align: center; /* Центрирование текста */
+    border-top: 1px solid var(--color-border); /* Верхняя граница */
+    background: var(--color-footer-dark); /* Темный фон */
+}
+
+/* Светлый футер */
+.site-footer--light {
+    background: var(--color-footer-light); /* Светлый фон */
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты и мобильные (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Показываем кнопку мобильного меню */
+    .site-nav__toggle {
+        display: inline-flex; /* Отображаем кнопку */
+    }
+
+    /* Меню навигации становится выпадающим */
+    .site-nav__links {
+        position: absolute; /* Абсолютное позиционирование */
+        right: 0; /* Выравнивание по правому краю */
+        top: 120%; /* Чуть ниже кнопки */
+        flex-direction: column; /* Вертикальное расположение */
+        background: var(--color-menu-bg); /* Темный фон */
+        padding: 1rem 1.5rem; /* Внутренние отступы */
+        border-radius: var(--radius-md); /* Скругление */
+        border: 1px solid var(--color-border); /* Граница */
+        box-shadow: var(--shadow-card); /* Тень */
+        display: none; /* Скрыто по умолчанию */
+    }
+
+    /* Открытое мобильное меню */
+    .site-nav__links.is-open {
+        display: flex; /* Показываем меню */
+    }
+
+    /* Блок-герой переходит в колонку */
+    .hero {
+        flex-direction: column; /* Вертикальное расположение */
+    }
+
+    /* Карусель показывает 2 карточки */
+    .carousel-item {
+        flex: 0 0 calc(50% - 0.625rem); /* Каждая карточка занимает 50% */
+        min-width: 180px; /* Минимальная ширина */
+    }
+
+    /* Уменьшаем отступы трека карусели */
+    .carousel-track {
+        padding: 0.85rem; /* Меньшие внутренние отступы */
+        gap: 0.85rem; /* Меньшее расстояние между карточками */
+    }
+
+    /* Уменьшаем кнопки навигации */
+    .carousel-nav {
+        width: 36px; /* Меньшая ширина */
+        height: 36px; /* Меньшая высота */
+        font-size: 1.2rem; /* Меньший размер символа */
+    }
+}
+
+/* Смартфоны (ширина до 480px) */
+@media (max-width: 480px) {
+    /* Карусель показывает 1 карточку */
+    .carousel-item {
+        flex: 0 0 100%; /* Карточка занимает всю ширину */
+        min-width: 100%; /* На всю ширину */
+    }
+
+    /* Уменьшаем высоту изображения */
+    .carousel-item__image {
+        height: 180px; /* Меньшая высота */
+    }
+
+    /* Еще меньше кнопки навигации */
+    .carousel-nav {
+        width: 32px; /* Еще меньше */
+        height: 32px; /* Еще меньше */
+        font-size: 1rem; /* Еще меньший символ */
+    }
+}
