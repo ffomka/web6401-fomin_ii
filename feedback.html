@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Обратная связь - TravelRu</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== СТИЛИ ВАЛИДАЦИИ ===== */
+    
+    .feedback-form__hint {
+      font-size: 0.85rem;
+      min-height: 1.2rem;
+      margin-top: 0.25rem;
+      transition: color 0.2s ease, opacity 0.2s ease;
+      opacity: 0;
+      display: block;
+    }
+
+    .feedback-form__input:not(:placeholder-shown) ~ .feedback-form__hint {
+      opacity: 1;
+    }
+
+    .feedback-form__hint.is-error {
+      color: #ff6b6b;
+    }
+
+    .feedback-form__hint.is-success {
+      color: #51cf66;
+    }
+
+    .feedback-form__input.is-valid {
+      border-color: #51cf66;
+      background: rgba(81, 207, 102, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(81, 207, 102, 0.3);
+    }
+
+    .feedback-form__input.is-valid:focus {
+      border-color: #51cf66;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(81, 207, 102, 0.2);
+    }
+
+    .feedback-form__input.is-invalid {
+      border-color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 107, 107, 0.3);
+      animation: shake 0.3s ease-in-out;
+    }
+
+    .feedback-form__input.is-invalid:focus {
+      border-color: #ff6b6b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Уведомления */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      z-index: 9999;
+      animation: slideIn 0.3s ease-out;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .notification--success {
+      background: rgba(34, 197, 94, 0.95);
+      color: white;
+    }
+
+    .notification--error {
+      background: rgba(220, 38, 38, 0.95);
+      color: white;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page page--accent">
+    <!-- ШАПКА САЙТА -->
+    <header class="page__header site-header site-header--compact">
+      <a href="index.html" class="site-header__logo">TravelRu</a>
+
+      <nav class="site-nav">
+        <button
+          id="nav-toggle"
+          class="site-nav__toggle"
+          aria-label="Переключить меню"
+        >
+          ☰
+        </button>
+        <ul id="nav-links" class="site-nav__links">
+          <li>
+            <a href="index.html" class="site-nav__link">Главная</a>
+          </li>
+          <li>
+            <a href="destinations.html" class="site-nav__link">Маршруты</a>
+          </li>
+          <li>
+            <a href="feedback.html" class="site-nav__link">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="page__content">
+      <section class="feedback">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 class="section-title">Расскажите о своих желаниях</h2>
+          <p style="color: rgba(232, 241, 245, 0.7); margin-top: 0.5rem;">
+            Мы предложим маршрут в течение 24 часов. Все поля обязательны, чтобы куратор мог адаптировать программу.
+          </p>
+        </div>
+
+        <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+        <form id="travel-form" class="feedback-form">
+          <!-- ИМЯ И ФАМИЛИЯ -->
+          <div class="feedback-form__field">
+            <label for="fullName" class="feedback-form__label">Имя и фамилия *</label>
+            <input
+              id="fullName"
+              type="text"
+              name="fullName"
+              class="feedback-form__input"
+              placeholder="Например: Иван Петров"
+              required
+              autocomplete="name"
+            />
+            <div class="feedback-form__hint"></div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="feedback-form__field">
+            <label for="email" class="feedback-form__label">Email *</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              class="feedback-form__input"
+              placeholder="example@mail.com"
+              required
+              autocomplete="email"
+            />
+            <div class="feedback-form__hint"></div>
+          </div>
+
+          <!-- СТИЛЬ ПУТЕШЕСТВИЯ -->
+          <div class="feedback-form__field">
+            <label for="travelStyle" class="feedback-form__label">Стиль путешествия *</label>
+            <select
+              id="travelStyle"
+              name="travelStyle"
+              class="feedback-form__input"
+              required
+            >
+              <option value="">-- Выберите стиль --</option>
+              <option value="adventure">Приключенческий туризм</option>
+              <option value="relaxation">Пляжный отдых</option>
+              <option value="culture">Культурный туризм</option>
+              <option value="extreme">Экстремальный спорт</option>
+              <option value="gastronomic">Гастрономический туризм</option>
+              <option value="eco">Экотуризм</option>
+              <option value="business">Деловой туризм</option>
+            </select>
+            <div class="feedback-form__hint"></div>
+          </div>
+
+          <!-- КОММЕНТАРИИ -->
+          <div class="feedback-form__field" style="grid-column: 1 / -1;">
+            <label for="notes" class="feedback-form__label">Комментарии и пожелания</label>
+            <textarea
+              id="notes"
+              name="notes"
+              class="feedback-form__input"
+              placeholder="Расскажите о ваших интересах, бюджете, сроках путешествия..."
+              rows="5"
+              autocomplete="off"
+            ></textarea>
+            <div class="feedback-form__hint"></div>
+          </div>
+
+          <!-- СОГЛАСИЕ -->
+          <div class="feedback-form__field" style="grid-column: 1 / -1; flex-direction: row; align-items: flex-start; gap: 0.75rem;">
+            <input
+              id="consent"
+              type="checkbox"
+              name="consent"
+              class="feedback-form__checkbox"
+              required
+            />
+            <label for="consent" style="margin: 0;">
+              Я согласен на обработку моих персональных данных в соответствии с политикой конфиденциальности *
+            </label>
+          </div>
+
+          <!-- КНОПКА ОТПРАВКИ -->
+          <button type="submit" class="feedback-form__submit" style="grid-column: 1 / -1;">
+            Отправить
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="page__footer site-footer">
+      <p>
+        &copy; <span id="year"></span> TravelRu. Все права защищены.
+      </p>
+    </footer>
+  </div>
+
+  <!-- ПОДКЛЮЧЕНИЕ JAVASCRIPT -->
+  <script src="js/app.js"></script>
+</body>
+</html>

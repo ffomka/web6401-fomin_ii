@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по России — Flex</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+</head>
+<body class="page">
+    <header class="page__header site-header">
+        <div class="site-header__logo">TravelRu</div>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Меню</button>
+            <ul class="site-nav__links" id="nav-links">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="destinations.html">Маршруты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page__content hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow">#открывайроссию</p>
+            <h1 class="hero__title">Путешествуй по самым вдохновляющим местам страны</h1>
+            <p class="hero__text">
+                Составьте маршрут выходного дня или отправьтесь в большое путешествие. Наша команда подготовила
+                подборку городов, природных парков и легендарных достопримечательностей, чтобы вы могли сконцентрироваться на впечатлениях.
+            </p>
+            <div class="hero__actions">
+                <a class="hero__button hero__button--primary" href="destinations.html">Собрать маршрут</a>
+                <a class="hero__button hero__button--ghost" href="feedback.html">Нужна помощь</a>
+            </div>
+        </div>
+        <figure class="hero__visual">
+            <img class="hero__image" src="images/russia-landscape.jpg" alt="Пейзаж России">
+            <figcaption class="hero__caption">Байкал, Камчатка, Алтай и десятки других направлений ждут вас</figcaption>
+        </figure>
+    </main>
+
+    <section class="page__section highlights" aria-label="Преимущества сервиса">
+        <div class="highlights__intro">
+            <h2 class="section-title">Почему TravelRu?</h2>
+            <p>Мы объединяем локальных экспертов, авторские подборки и дружелюбный сервис поддержки.</p>
+        </div>
+        <div class="highlights__list">
+            <article class="highlight-card highlight-card--experience">
+                <h3 class="highlight-card__title">Опытные кураторы</h3>
+                <p class="highlight-card__text">Каждый маршрут собирает эксперт, лично посетивший точки программы.</p>
+            </article>
+            <article class="highlight-card highlight-card--nature">
+                <h3 class="highlight-card__title">Фокус на природе</h3>
+                <p class="highlight-card__text">Выбираем тропы и виды, которые безопасны и доступны в вашем сезоне.</p>
+            </article>
+            <article class="highlight-card highlight-card--community">
+                <h3 class="highlight-card__title">Комьюнити</h3>
+                <p class="highlight-card__text">Живой чат путешественников, ответы на вопросы и советы по экипировке.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page__section stories" aria-label="Истории путешествий">
+        <div class="stories__header">
+            <h2 class="section-title">Истории путешественников</h2>
+            <p>Вдохновляйтесь реальными впечатлениями и делитесь своими открытиями.</p>
+        </div>
+        <div class="stories__list">
+            <article class="story-card">
+                <div class="story-card__badge">Weekend</div>
+                <h3 class="story-card__title">Санкт-Петербург за 48 часов</h3>
+                <p class="story-card__text">Маршрут от крыш Васильевского до рассвета на стрелке.</p>
+            </article>
+            <article class="story-card">
+                <div class="story-card__badge">Adventure</div>
+                <h3 class="story-card__title">Треккинг на плато Путорана</h3>
+                <p class="story-card__text">Вертикальные отвесы, водопады и ночёвки под северным сиянием.</p>
+            </article>
+            <article class="story-card">
+                <div class="story-card__badge">Family</div>
+                <h3 class="story-card__title">Байкал для всей семьи</h3>
+                <p class="story-card__text">Экологичные базы, мастер-классы со старожилами и катание на собачьих упряжках.</p>
+            </article>
+            <article class="story-card">
+                <div class="story-card__badge">City</div>
+                <h3 class="story-card__title">Уличное искусство Казани</h3>
+                <p class="story-card__text">Маршрут по набережной Кабана, мастерские и локальные кафе.</p>
+            </article>
+        </div>
+    </section>
+
+    <footer class="page__footer site-footer">
+        <p>&copy; <span id="year"></span> TravelRu. Все цвета заданы через CSS-переменные.</p>
+    </footer>
+</body>
+</html>
+
+
